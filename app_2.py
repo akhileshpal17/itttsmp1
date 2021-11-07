@@ -18,12 +18,12 @@ spell = SpellChecker()
 
 def main():
 
-   st.title("VisualSpeaker")
+   #st.title("VisualSpeaker")
 
     #st.image("new.png")
 
 
-    #st.subheader("")
+    st.subheader("VisualSpeaker")
 
     st.markdown("") 
 
