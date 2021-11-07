@@ -29,10 +29,7 @@ def main():
 
     # Your code goes below
     # Our Dataset
-    st.markdown("""
-    	#### Input Image (in .jpg)
-
-        """)
+    st.markdown("""#### Input Image (in .jpg)""")
     
     #Load Quantized model
     east_quantized_1 = tf.lite.Interpreter(model_path="east_float16.tflite")
