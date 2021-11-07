@@ -174,13 +174,13 @@ def main():
         st.image(im, channels="BGR")
         st.write("Predicted Texts:",txt)
       
-   st.write("FOR TEXT TO SPEECH")
-   def reading_from_user():
-       user_input=input("Enter the text")
-       audio_created=gTTS(text=user_input,lang=language,slow=slow_audio_speed)
-       audio_created.save(filename)
-       st.write("Speak",playsound.playsound(filename))
-       os.remove(filename)
+        st.write("FOR TEXT TO SPEECH")
+          def reading_from_user():
+            user_input=input("Enter the text")
+            audio_created=gTTS(text=user_input,lang=language,slow=slow_audio_speed)
+            audio_created.save(filename)
+            st.write("Speak",playsound.playsound(filename))
+            os.remove(filename)
      
     
 if __name__ == "__main__":
