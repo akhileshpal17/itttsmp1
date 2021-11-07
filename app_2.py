@@ -9,18 +9,21 @@ import numpy as np
 import tensorflow as tf
 import time
 import pytesseract
+import gTTS
 from spellchecker import SpellChecker
 from pipeline import *
+from gtts import gTTS
+import playsound
 spell = SpellChecker()
 
 def main():
 
-   # st.title("")
+   st.title("VisualSpeaker")
 
     #st.image("new.png")
 
 
-    #st.subheader(" Detecting and Recognizing text from a given natural scene image using EAST And Tesseract Algorithms.")
+    #st.subheader("")
 
     st.markdown("") 
 
@@ -173,9 +176,15 @@ def main():
         st.write('Predicted Image')
         st.image(im, channels="BGR")
         st.write("Predicted Texts:",txt)
+        st.write("FOR TEXT TO SPEECH")
+        def reading_from_user():
+          user_input=input("Enter the text")
+          audio_created=gTTS(text=user_input,lang=language,slow=slow_audio_speed)
+          audio_created.save(filename)
+          st.write("Speak",playsound.playsound(filename))
+          os.remove(filename)
      
     
 if __name__ == "__main__":
     main()        
-
 
