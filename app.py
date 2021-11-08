@@ -9,6 +9,9 @@ import numpy as np
 import tensorflow as tf
 import time
 import pytesseract
+import base64
+import time
+timestr=time.strftime("%Y%m%d-%H%M%S")
 from spellchecker import SpellChecker
 from pipeline import *
 spell = SpellChecker()
@@ -38,7 +41,12 @@ def main():
     input_details_detector = east_quantized_1.get_input_details()
     output_details_detector = east_quantized_1.get_output_details()   
 
-    
+    def text_downloader(raw_text):
+      b64=base64.b64encode(raw_text.encode()).decode()
+      new_filename="new_text_file_{}_.txt".format(timestr)
+      st.markdown("###Download File###")
+      href=f'<a href="data:file/txt;base64,{b64}"download="{new_filename}">Click Here!!</a>'
+      st.markdown(href,unsafe-allow_html=True)
     def final(img):
 
         spell = SpellChecker()
@@ -173,7 +181,7 @@ def main():
         st.write('Predicted Image')
         st.image(im, channels="BGR")
         st.write("Predicted Texts:",txt)
-        #st.download_button(label='downloadtext',data=txt)  
+        text_downloader(txt)
      
 if __name__ == "__main__":
     main()        
