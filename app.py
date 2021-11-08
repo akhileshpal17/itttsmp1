@@ -173,8 +173,8 @@ def main():
         st.write('Predicted Image')
         st.image(im, channels="BGR")
         st.write("Predicted Texts:",txt)
+        st.download_button(label='downloadtext',data=txt)  
      
-    
 if __name__ == "__main__":
     main()        
 
