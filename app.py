@@ -46,7 +46,7 @@ def main():
       new_filename="new_text_file_{}_.txt".format(timestr)
       st.markdown("###Download File###")
       href=f'<a href="data:file/txt;base64,{b64}"download="{new_filename}">Click Here!!</a>'
-      st.markdown(href,unsafe-allow_html=True)
+      st.markdown(href,unsafe_allow_html=True)
     def final(img):
 
         spell = SpellChecker()
