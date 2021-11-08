@@ -27,7 +27,7 @@ def main():
     # Your code goes below
     # Our Dataset
     st.markdown("""
-    	#### Input Image (in .jpg)
+    	#### Input Image
 
         """)
     
@@ -148,7 +148,7 @@ def main():
 
         return img,txt
 
-    uploaded_file = st.file_uploader("input data", type=".jpg")
+    uploaded_file = st.file_uploader("input data", type=".jpg" type=".jpeg",type=".png")
     
     if uploaded_file is not None:
         file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
