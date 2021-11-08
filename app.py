@@ -9,9 +9,6 @@ import numpy as np
 import tensorflow as tf
 import time
 import pytesseract
-import base64
-import time
-timestr=time.strftime("%Y%m%d-%H%M%S")
 from spellchecker import SpellChecker
 from pipeline import *
 spell = SpellChecker()
@@ -181,7 +178,7 @@ def main():
         st.write('Predicted Image')
         st.image(im, channels="BGR")
         st.write("Predicted Texts:",txt)
-        text_downloader(txt)
+     
      
 if __name__ == "__main__":
     main()        
