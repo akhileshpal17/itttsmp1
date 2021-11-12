@@ -206,8 +206,6 @@ if st.button("convert"):
         st.write(f" {output_text}")
 
 
-
-if __name__ == "__main__":
-    main() 
-    text = st.text_input("Enter text")
-    text_to_speech(text)
+main() 
+text = st.text_input("Enter text")
+text_to_speech()
