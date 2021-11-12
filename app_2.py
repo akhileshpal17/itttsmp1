@@ -16,10 +16,11 @@ st.title("Text to speech")
 translator = Translator()
 
 text = st.text_area("Enter text")
+input_language="en"
+output_language="en"
+tld="com"
 def text_to_speech(input_language, output_language, text, tld):
-    input_language="en"
-    output_language="en"
-    tld="com"
+    
     translation = translator.translate(text, src=input_language, dest=output_language)
     trans_text = translation.text
     tts = gTTS(trans_text, lang=output_language, tld=tld, slow=False)
