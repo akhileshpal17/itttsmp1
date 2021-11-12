@@ -5,14 +5,9 @@ import glob
 import os
 from gtts import gTTS
 from googletrans import Translator
-
-try:
-    os.mkdir("temp")
-except:
-    pass
 st.title("Text to speech")
 
-text = st.text_area("Enter text")
+text = st.text_input("Enter text")
 def text_to_speech(text):
     tts = gTTS(text,lang="en",slow=False)
     try:
