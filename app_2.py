@@ -15,7 +15,7 @@ except:
 st.title("Text to speech")
 translator = Translator()
 
-text = st.text_input("Enter text")
+text = st.text_area("Enter text")
 def text_to_speech(input_language, output_language, text, tld):
     input_language="en"
     output_language="en"
