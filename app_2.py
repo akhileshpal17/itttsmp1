@@ -1,6 +1,3 @@
-
-
-
 # Importing the required packages
 import streamlit as st
 import cv2      
@@ -9,15 +6,13 @@ import numpy as np
 import tensorflow as tf
 import time
 import pytesseract
-import gTTS
+import time
+import glob
 from spellchecker import SpellChecker
 from pipeline import *
 from gtts import gTTS
-import playsound
+from googletrans import Translator
 spell = SpellChecker()
-  
-    
-
 
 def main():
 
@@ -32,7 +27,9 @@ def main():
 
     # Your code goes below
     # Our Dataset
-    st.markdown("""#### Input Image (in .jpg)""")
+    st.markdown("""
+    	#### Input Image
+        """)
     
     #Load Quantized model
     east_quantized_1 = tf.lite.Interpreter(model_path="east_float16.tflite")
@@ -41,7 +38,12 @@ def main():
     input_details_detector = east_quantized_1.get_input_details()
     output_details_detector = east_quantized_1.get_output_details()   
 
-    
+    def text_downloader(raw_text):
+      b64=base64.b64encode(raw_text.encode()).decode()
+      new_filename="new_text_file_{}_.txt".format(timestr)
+      st.markdown("###Download File###")
+      href=f'<a href="data:file/txt;base64,{b64}"download="{new_filename}">Click Here!!</a>'
+      st.markdown(href,unsafe_allow_html=True)
     def final(img):
 
         spell = SpellChecker()
@@ -151,7 +153,7 @@ def main():
 
         return img,txt
 
-    uploaded_file = st.file_uploader("input data", type=".jpg")
+    uploaded_file = st.file_uploader("input data", type=["jpg","png","jpeg"])
     
     if uploaded_file is not None:
         file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
@@ -176,10 +178,44 @@ def main():
         st.write('Predicted Image')
         st.image(im, channels="BGR")
         st.write("Predicted Texts:",txt)
-        user_input=st.text_area("Enter text here",default_value_goes_here)
-      
-     
-    
-if __name__ == "__main__":
-    main()        
 
+if __name__ == "__main__":
+    main() 
+    text = st.text_input("Enter text")
+    def text_to_speech(text):
+     
+     tts = gTTS(lang="en", slow=False)
+     try:
+        my_file_name = text[0:20]
+     except:
+        my_file_name = "audio"
+     tts.save(f"temp/{my_file_name}.mp3")
+     return my_file_name, trans_text
+
+
+display_output_text = st.checkbox("Display output text")
+
+if st.button("convert"):
+    result, output_text = text_to_speech(text)
+    audio_file = open(f"temp/{result}.mp3", "rb")
+    audio_bytes = audio_file.read()
+    st.markdown(f"## Your audio:")
+    st.audio(audio_bytes, format="audio/mp3", start_time=0)
+
+    if display_output_text:
+        st.markdown(f"## Output text:")
+        st.write(f" {output_text}")
+
+
+def remove_files(n):
+    mp3_files = glob.glob("temp/*mp3")
+    if len(mp3_files) != 0:
+        now = time.time()
+        n_days = n * 86400
+        for f in mp3_files:
+            if os.stat(f).st_mtime < now - n_days:
+                os.remove(f)
+                print("Deleted ", f)
+
+
+remove_files(7)
