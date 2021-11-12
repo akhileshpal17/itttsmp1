@@ -179,7 +179,7 @@ def main():
         st.image(im, channels="BGR")
         st.write("Predicted Texts:",txt)
    
-   text_downloader(txt)
+   text_downloader()
    text_input=st.text_input("Enter text here")  
 if __name__ == "__main__":
     main()        
