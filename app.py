@@ -194,7 +194,9 @@ try:
     os.mkdir("temp")
 except:
     pass
-//st.subheader("Text to speech")
+st.markdown("""
+    	#### Input text
+        """)
 translator = Translator()
 
 text = st.text_area("Enter text")
