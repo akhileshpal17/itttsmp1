@@ -220,7 +220,7 @@ if st.button("convert"):
         st.write(f" {output_text}")
 
 if st.button("Download as audio file"):
-      tts.save("output.mp3")
+      tts.save(f"temp/{my_file_name}.mp3")
 
 def remove_files(n):
     mp3_files = glob.glob("temp/*mp3")
