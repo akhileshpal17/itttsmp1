@@ -179,10 +179,9 @@ def main():
         st.image(im, channels="BGR")
         st.write("Predicted Texts:",txt)
 
-if __name__ == "__main__":
-    main() 
-    text = st.text_input("Enter text")
-    def text_to_speech(text):
+
+
+def text_to_speech(text):
      
      tts = gTTS(lang="en", slow=False)
      try:
@@ -207,3 +206,8 @@ if st.button("convert"):
         st.write(f" {output_text}")
 
 
+
+if __name__ == "__main__":
+    main() 
+    text = st.text_input("Enter text")
+    text_to_speech()
