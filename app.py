@@ -180,7 +180,7 @@ def main():
         st.write("Predicted Texts:",txt)
    
    
-   text_input=st.text_input("Enter text here")  
+     
 if __name__ == "__main__":
     main()        
 
