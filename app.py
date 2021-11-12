@@ -189,12 +189,12 @@ def main():
      
 if __name__ == "__main__":
     main() 
- st.download_button(label='Download Text',data=txt,file_name='result.txt') 
+ 
 try:
     os.mkdir("temp")
 except:
     pass
-st.title("Text to speech")
+st.subheader("Text to speech")
 translator = Translator()
 
 text = st.text_area("Enter text")
