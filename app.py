@@ -175,8 +175,6 @@ def main():
         st.image(im, channels="BGR")
         st.write("Predicted Texts:",txt)
 
-st.download_button(label, data=txt, file_name='result.txt', mime=None, key=None)
-
      
 if __name__ == "__main__":
     main() 
