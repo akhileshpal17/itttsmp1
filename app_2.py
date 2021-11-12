@@ -208,4 +208,4 @@ if st.button("convert"):
 
 main() 
 text = st.text_input("Enter text")
-text_to_speech()
+text_to_speech(text)
