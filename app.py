@@ -40,13 +40,6 @@ def main():
     # Get input and output tensors.
     input_details_detector = east_quantized_1.get_input_details()
     output_details_detector = east_quantized_1.get_output_details()   
-
-    def text_downloader(raw_text):
-      b64=base64.b64encode(raw_text.encode()).decode()
-      new_filename="new_text_file_{}_.txt".format(timestr)
-      st.markdown("###Download File###")
-      href=f'<a href="data:file/txt;base64,{b64}"download="{new_filename}">Click Here!!</a>'
-      st.markdown(href,unsafe_allow_html=True)
     def final(img):
 
         spell = SpellChecker()
@@ -181,15 +174,13 @@ def main():
         st.write('Predicted Image')
         st.image(im, channels="BGR")
         st.write("Predicted Texts:",txt)
-      
- 
- 
 
+st.download_button(label, data=txt, file_name='result.txt', mime=None, key=None)
 
      
 if __name__ == "__main__":
     main() 
- 
+
 try:
     os.mkdir("temp")
 except:
@@ -203,11 +194,12 @@ text = st.text_area("Enter text")
 input_language="en"
 output_language="en"
 tld="com"
+global tts
 def text_to_speech(input_language, output_language, text, tld):
     
     translation = translator.translate(text, src=input_language, dest=output_language)
     trans_text = translation.text
-    tts = gTTS(trans_text, lang=output_language, tld=tld, slow=False)
+    tts=gTTS(trans_text, lang=output_language, tld=tld, slow=False)
     try:
         my_file_name = text[0:20]
     except:
@@ -229,6 +221,8 @@ if st.button("convert"):
         st.markdown(f"## Output text:")
         st.write(f" {output_text}")
 
+if st.button("Download as audio file"):
+      tts.save("output.mp3")
 
 def remove_files(n):
     mp3_files = glob.glob("temp/*mp3")
