@@ -178,7 +178,7 @@ def main():
         st.write('Predicted Image')
         st.image(im, channels="BGR")
         st.write("Predicted Texts:",txt)
-         user_input=st.text_area("Enter text here",default_value_goes_here)     
+          
      
 if __name__ == "__main__":
     main()        
