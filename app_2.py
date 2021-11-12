@@ -16,12 +16,8 @@ from gtts import gTTS
 import playsound
 spell = SpellChecker()
   
- def reading_from_user():
-    user_input=input("Enter the text")
-    audio_created=gTTS(text=user_input,lang=language,slow=slow_audio_speed)
-    audio_created.save(filename)
-    st.write("Speak",playsound.playsound(filename))
-    os.remove(filename)
+    
+
 
 def main():
 
@@ -180,8 +176,8 @@ def main():
         st.write('Predicted Image')
         st.image(im, channels="BGR")
         st.write("Predicted Texts:",txt)
+        user_input=st.text_area("Enter text here",default_value_goes_here)
       
-reading_from_user():      
      
     
 if __name__ == "__main__":
