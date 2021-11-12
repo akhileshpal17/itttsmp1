@@ -181,14 +181,15 @@ def main():
         st.write('Predicted Image')
         st.image(im, channels="BGR")
         st.write("Predicted Texts:",txt)
-        st.download_button(label='Download Text',data=txt,file_name='result.txt') 
+      
+ 
  
 
 
      
 if __name__ == "__main__":
     main() 
-
+ st.download_button(label='Download Text',data=txt,file_name='result.txt') 
 try:
     os.mkdir("temp")
 except:
